@@ -66,9 +66,9 @@
             <div class="form-group">
                 <strong><label for="tamanho">Escolha o tamanho:</label></strong>
                 <select class="form-control" name="tamanho" id="tamanho">
-                    <option value="300">300ml</option>
-                    <option value="500">500ml</option>
-                    <option value="700">700ml</option>
+                    <option value="300">300ml - 14 R$</option>
+                    <option value="500">500ml - 16 R$</option>
+                    <option value="700">700ml - 18 R$</option>
                 </select>
             </div>
             <hr>
