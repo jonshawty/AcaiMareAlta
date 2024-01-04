@@ -36,7 +36,7 @@
         $adicionais = isset($_POST['adicionais']) ? $_POST['adicionais'] : [];
 
         // Preços
-        $precoTamanho = ($tamanho == '300') ? 10 : (($tamanho == '500') ? 15 : 20);
+        $precoTamanho = ($tamanho == '300') ? 14 : (($tamanho == '500') ? 16 : 18);
         $precoComplemento = 0; // Preço por complemento
         $precoFruta = 0; // Preço por fruta
         $precoAdicional = 2; // Preço por adicional
