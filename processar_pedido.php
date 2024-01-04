@@ -114,10 +114,17 @@
             <p><strong>Valor Total:</strong> R$ <?= $valorTotal ?></p>
             
             <?php
-                $numeroWhatsApp = '28999872176'; // Substitua pelo número de WhatsApp desejado
-                $mensagemWhatsApp = urlencode("Olá, gostaria de fazer um pedido!\n\nTamanho: $tamanho ml\n\nItens Adicionados:\n- " . implode("\n- ", $listaItens) . "\n\nValor Total: R$ $valorTotal");
-                $linkWhatsApp = "https://api.whatsapp.com/send?phone=$numeroWhatsApp&text=$mensagemWhatsApp";
-            ?>
+                $numeroWhatsApp = '5528999872176'; // Substitua pelo número de WhatsApp desejado
+                $mensagemWhatsApp = "Olá, gostaria de fazer um pedido!\n\nTamanho: $tamanho ml\n\n";
+
+                if (!empty($listaItens)) {
+                    $mensagemWhatsApp .= "Itens Adicionados:\n- " . implode("\n- ", $listaItens) . "\n\n";
+                }
+                
+                $mensagemWhatsApp .= "Valor Total: R$ $valorTotal";
+                
+                $linkWhatsApp = "https://api.whatsapp.com/send?phone=$numeroWhatsApp&fbclid&text=" . urlencode($mensagemWhatsApp);
+                ?>
             <a href="<?= $linkWhatsApp ?>" target="_blank" class="btn btn-success">Enviar ao WhatsApp</a>
 
             <button onclick="window.history.back()" class="btn btn-primary">Editar Pedido</button>
