@@ -76,14 +76,14 @@
             if ($contagemCoberturas <= 2) {
                 $listaItens[] = "Coberturas: " . implode(", ", $coberturas);
                 foreach ($coberturas as $cobertura) {
-                    $valorTotal += $precoAdicional;
+                    $valorTotal += $precoComplemento;
                 }
             } else {
                 // Limite de 2 coberturas, remover extras
                 $coberturas = array_slice($coberturas, 0, 2);
                 $listaItens[] = "Coberturas: " . implode(", ", $coberturas);
                 foreach ($coberturas as $cobertura) {
-                    $valorTotal += $precoAdicional;
+                    $valorTotal += $precoComplemento;
                 }
             }
         }
