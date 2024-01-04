@@ -1,0 +1,75 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f4ec;
+    color: #473d3a;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 20px 0; /* Ajuste conforme necessário */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: #8e3b38;
+}
+
+.cabecalho-img {
+    width: 100%;
+    height: auto;
+}
+
+
+.resumo {
+    margin-top: 20px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+/* Adapte as regras existentes para telas menores */
+@media (max-width: 767px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-check {
+        margin-bottom: 10px;
+        display: block; /* Alterar para exibição de bloco para ocupar toda a largura */
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* Estilos adicionais para dispositivos móveis */
+@media (max-width: 480px) {
+    .container {
+        margin-top: 30px; /* Ajustar margem superior para um espaço mais agradável em dispositivos pequenos */
+        margin-bottom: 30px;
+    }
+}
+
