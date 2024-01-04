@@ -81,7 +81,7 @@
                     $complementos = [
                         'Amendoim Triturado', 'Granola', 'Paçoca', 'Leite em Pó',
                         'Sucrilhos Cereal', 'Sucrilhos Chocolate', 'Disquete', 'Granulado',
-                        'Ovo Maltine', 'Leite Condensado'
+                        'Ovomaltine', 'Leite Condensado'
                     ];
 
                     $complementosPorColuna = ceil(count($complementos) / 2);
