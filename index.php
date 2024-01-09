@@ -72,7 +72,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="img/cabelalho.png" alt="Cabeçalho" class="cabecalho-img mb-3">
+        <img src="cabelalho.png" alt="Cabeçalho" class="cabecalho-img mb-3">
         <h1>Personalize seu Açaí</h1>
 
         <form action="processar_pedido.php" method="post">
