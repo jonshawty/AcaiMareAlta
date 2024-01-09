@@ -120,17 +120,6 @@ $listaPagamento = [];
 $listaPagamento[] = "Forma de Pagamento: $metodoPagamento";
 ?>
 
-<!-- Seu HTML para exibir o resumo -->
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <!-- ... (o restante do seu cabeçalho HTML permanece o mesmo) ... -->
-</head>
-
-<body>
-    <div class="container">
-        <h1 class="text-center">Resumo do Pedido</h1>
 
         <div class="resumo">
             <p><strong>Tamanho:</strong> <?= $tamanho ?>ml (R$ <?= $precoTamanho ?>)</p>
