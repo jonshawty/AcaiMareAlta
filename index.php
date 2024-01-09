@@ -8,56 +8,71 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script>
-        function limitarComplementos() {
-            var checkboxes = document.querySelectorAll('input[name="complementos[]"]');
-            var totalSelecionados = 0;
+    function limitarComplementos() {
+        var checkboxes = document.querySelectorAll('input[name="complementos[]"]');
+        var totalSelecionados = 0;
 
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                totalSelecionados++;
+            }
+        });
+
+        var tamanhoSelecionado = document.getElementById('tamanho').value;
+
+        // Defina o número máximo de complementos com base no tamanho escolhido
+        var maxComplementos = (tamanhoSelecionado == 300) ? 3 : 5;
+
+        if (totalSelecionados >= maxComplementos) {
             checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    totalSelecionados++;
+                if (!checkbox.checked) {
+                    checkbox.disabled = true;
                 }
             });
-
-            if (totalSelecionados >= 5) {
-                checkboxes.forEach(function(checkbox) {
-                    if (!checkbox.checked) {
-                        checkbox.disabled = true;
-                    }
-                });
-            } else {
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.disabled = false;
-                });
-            }
-        }
-
-        function limitarFrutas() {
-            var checkboxes = document.querySelectorAll('input[name="frutas[]"]');
-            var totalSelecionados = 0;
-
+        } else {
             checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    totalSelecionados++;
+                checkbox.disabled = false;
+            });
+        }
+    }
+
+    function limitarFrutas() {
+        var checkboxes = document.querySelectorAll('input[name="frutas[]"]');
+        var totalSelecionados = 0;
+
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                totalSelecionados++;
+            }
+        });
+
+        if (totalSelecionados >= 2) {
+            checkboxes.forEach(function(checkbox) {
+                if (!checkbox.checked) {
+                    checkbox.disabled = true;
                 }
             });
-
-            if (totalSelecionados >= 2) {
-                checkboxes.forEach(function(checkbox) {
-                    if (!checkbox.checked) {
-                        checkbox.disabled = true;
-                    }
-                });
-            } else {
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.disabled = false;
-                });
-            }
+        } else {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.disabled = false;
+            });
         }
+    }
+
+    function mostrarFormularioAdicional() {
+        var continuarPedindoBtn = document.getElementById('continuarPedindoBtn');
+        var enviarPedidoBtn = document.getElementById('enviarPedidoBtn');
+        var formularioAdicional = document.getElementById('formularioAdicional');
+
+        continuarPedindoBtn.style.display = 'none';
+        enviarPedidoBtn.style.display = 'block';
+        formularioAdicional.style.display = 'block';
+    }
     </script>
 </head>
 <body>
     <div class="container">
-        <img src="cabelalho.png" alt="Cabeçalho" class="cabecalho-img mb-3">
+        <img src="img/cabelalho.png" alt="Cabeçalho" class="cabecalho-img mb-3">
         <h1>Personalize seu Açaí</h1>
 
         <form action="processar_pedido.php" method="post">
@@ -81,7 +96,7 @@
                     $complementos = [
                         'Amendoim Triturado', 'Granola', 'Paçoca', 'Leite em Pó',
                         'Sucrilhos Cereal', 'Sucrilhos Chocolate', 'Disquete', 'Granulado',
-                        'Ovomaltine', 'Leite Condensado'
+                        'Ovo Maltine', 'Leite Condensado'
                     ];
 
                     $complementosPorColuna = ceil(count($complementos) / 2);
@@ -152,7 +167,39 @@
             </div>
             <hr>
 
-            <button type="submit" class="btn btn-primary">Enviar Pedido</button>
+            <button type="button" id="continuarPedindoBtn" onclick="mostrarFormularioAdicional()" class="btn btn-primary">Continuar pedindo</button>
+
+            <!-- Formulário Adicional (inicialmente oculto) -->
+            <div id="formularioAdicional" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group col-md-9">
+                        <label for="rua">Rua:</label>
+                        <input type="text" id="rua" name="rua" class="form-control">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" name="numero" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pontoReferencia">Ponto de Referência:</label>
+                    <input type="text" id="pontoReferencia" name="pontoReferencia" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label for="metodoPagamento">Método de Pagamento:</label>
+                    <select id="metodoPagamento" name="metodoPagamento" class="form-control">
+                        <option value="Pix">Pix</option>
+                        <option value="cartao">Cartão de Crédito/Débito</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <button type="submit" id="enviarPedidoBtn" style="display: none;" class="btn btn-primary">Enviar Pedido</button>
         </form>
     </div>
 </body>
